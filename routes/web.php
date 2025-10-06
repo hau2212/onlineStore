@@ -13,5 +13,7 @@ Route::get('/' , 'App\Http\Controllers\HomeController@index')->name('home.index'
 Route::get('/about','App\Http\Controllers\HomeController@about')->name("home.about");
 Route::get('/product' , 'App\Http\Controllers\ProducController@index') -> name("product.index");
 Route::get('/show/{id}' , 'App\Http\Controllers\ProducController@show') -> name("product.show");
+Route::get('/login' , 'App\Http\Controllers\loginController@login') -> name("home.login");
+
 
 

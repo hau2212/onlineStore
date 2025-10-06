@@ -24,6 +24,8 @@
                     <a class="nav-link active" href="{{ route('home.index') }}">Home</a>
                     <a class="nav-link active" href="{{ route('product.index') }}">Product</a>
                     <a class="nav-link active" href="{{ route('home.about') }}">About</a>
+                    <a class="nav-link active" href="{{ route('home.login') }}">Login</a>
+
                 </div>
             </div>
         </div>

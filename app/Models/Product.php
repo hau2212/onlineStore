@@ -44,6 +44,9 @@ class Product extends Model
     public function setImage($image){
         $this -> attributes['image'] = $image;
     }
+    public function setPrice($price){
+        $this -> attributes['price'] = $price;
+    }
     public function setCreatedAt($created_at){
         $this -> attributes['created_at'] = $created_at;
     }
