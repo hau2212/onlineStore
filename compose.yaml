@@ -1,0 +1,49 @@
+version: "3.8"
+
+services:
+  # Dịch vụ web (Laravel)
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel_app
+    ports:
+      - "8000:80"               # Map cổng 8000 ngoài host -> 80 trong container
+    volumes:
+      - .:/var/www/html         # Mount mã nguồn để code sửa là cập nhật ngay
+    depends_on:
+      - db                      # Chờ MySQL khởi động xong
+    environment:
+      - DB_HOST=db              # Tên service 'db' bên dưới chính là hostname
+      - DB_PORT=3306
+      - DB_DATABASE=online_store
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
+
+  # Dịch vụ MySQL
+  db:
+    image: mysql:8.0
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: online_store
+    ports:
+      - "3307:3306"             # Cho phép truy cập MySQL từ máy ngoài qua port 3307
+    volumes:
+      - db_data:/var/lib/mysql  # Lưu dữ liệu ra volume để không bị mất khi container tắt
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    depends_on:
+      - db
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: root
+      
+volumes:
+  db_data:
