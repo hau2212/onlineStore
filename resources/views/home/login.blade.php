@@ -1,9 +1,7 @@
 @extends('layout.app')
-<!DOCTYPE html>
-<html>  
-<head> </head>
-<body> 
-    <p> hello </p>
-</body>
-
-</html>
+@section('content')
+    @foreach ($viewData['user'] as $user )
+        <p> {{$user}} </p>
+    
+    @endforeach
+@endsection()
