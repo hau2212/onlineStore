@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     //
+    protected $fillable =['name', 'description' , 'price' ,'image'];
+
     #use HasFactory;
 ##################################____GET____#####################################################
     public function getID(){

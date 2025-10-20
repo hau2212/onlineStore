@@ -18,3 +18,6 @@ nav {
     height: 18w;
     object-fit: cover;
 }
+button {
+    background-color: aquamarine;
+}
